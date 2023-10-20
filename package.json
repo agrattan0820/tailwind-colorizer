@@ -1,0 +1,25 @@
+{
+  "name": "tailwind-colorizer",
+  "displayName": "tailwind-colorizer",
+  "description": "Colorizes Tailwind class names",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.83.0"
+  },
+  "categories": [
+    "Programming Languages"
+  ],
+  "contributes": {
+    "languages": [{
+      "id": "tailwindcolor",
+      "aliases": ["Tailwind Color", "tailwindcolor"],
+      "extensions": [".tailwind"],
+      "configuration": "./language-configuration.json"
+    }],
+    "grammars": [{
+      "language": "tailwindcolor",
+      "scopeName": "source.tailwind",
+      "path": "./syntaxes/tailwindcolor.tmLanguage.json"
+    }]
+  }
+}
