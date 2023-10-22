@@ -10,16 +10,55 @@
     "Programming Languages"
   ],
   "contributes": {
-    "languages": [{
-      "id": "tailwindcolor",
-      "aliases": ["Tailwind Color", "tailwindcolor"],
-      "extensions": [".tailwind"],
-      "configuration": "./language-configuration.json"
-    }],
-    "grammars": [{
-      "language": "tailwindcolor",
-      "scopeName": "source.tailwind",
-      "path": "./syntaxes/tailwindcolor.tmLanguage.json"
-    }]
+    "languages": [
+      {
+        "id": "tailwindcolor",
+        "aliases": [
+          "Tailwind Color",
+          "tailwindcolor"
+        ],
+        "extensions": [
+          ".tailwind"
+        ],
+        "configuration": "./language-configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "tailwindcolor",
+        "scopeName": "source.tailwind",
+        "path": "./syntaxes/tailwindcolor.tmLanguage.json"
+      },
+      {
+        "injectTo": [
+          "source.tsx",
+          "source.js.jsx",
+          "source.ts",
+          "source.js"
+        ],
+        "scopeName": "source.template.tailwind",
+        "path": "./syntaxes/injection.json"
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "pnpm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "pnpm run compile && pnpm run lint",
+    "lint": "eslint src --ext ts",
+    "test": "node ./out/test/runTest.js"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.83.0",
+    "@types/mocha": "^10.0.1",
+    "@types/node": "16.x",
+    "@typescript-eslint/eslint-plugin": "^6.4.1",
+    "@typescript-eslint/parser": "^6.4.1",
+    "eslint": "^8.47.0",
+    "glob": "^10.3.3",
+    "mocha": "^10.2.0",
+    "typescript": "^5.1.6",
+    "@vscode/test-electron": "^2.3.4"
   }
 }
